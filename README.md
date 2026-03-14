@@ -1,182 +1,89 @@
-# Stellar Tip Jar – Frontend
+# Stellar Tip Jar Frontend
 
-A simple open-source web application that allows users to **send tips to creators using the Stellar blockchain**.
+A modern, open-source frontend starter for tipping creators with the Stellar network.
 
-This repository contains the **frontend interface** for the Stellar Tip Jar platform. It enables users to view creator profiles, send tips, and track transactions through an intuitive web interface.
+This repository uses **Next.js (App Router)**, **TypeScript**, and **TailwindCSS** with a scalable folder structure designed for collaboration.
 
-The application interacts with a backend API and Soroban smart contracts deployed on the **Stellar Network**.
+## Project Description
 
----
+Stellar Tip Jar allows supporters to send tips to creators using Stellar assets. This frontend starter includes:
 
-## Project Overview
+- Landing page introducing the project
+- Dynamic creator profile route (`/creator/[username]`)
+- Explore creators page (`/explore`)
+- Tip flow placeholder (`/tips`)
+- Reusable UI components (Button, Navbar)
+- Wallet connection placeholder for future Stellar wallet integration
+- API service layer prepared for backend communication
 
-Stellar Tip Jar is a lightweight platform that allows creators to receive tips directly from supporters using blockchain payments.
+## Setup Instructions
 
-Instead of relying on centralized platforms, creators can simply share a link like:
+1. Clone the repository.
+2. Install dependencies:
 
-```
-https://tipjar.app/username
-```
-
-Supporters can then send tips using Stellar tokens.
-
----
-
-## Repository Architecture
-
-This project is part of a multi-repository architecture:
-
-```
-stellar-tipjar
-│
-├── stellar-tipjar-frontend
-├── stellar-tipjar-backend
-└── stellar-tipjar-contracts
-```
-
-* **Frontend:** User interface for creators and supporters
-* **Backend:** API and data indexing service
-* **Contracts:** Soroban smart contracts for handling tip payments
-
----
-
-## Tech Stack
-
-* React / Next.js
-* TypeScript
-* Stellar SDK
-* Tailwind CSS (optional)
-* Wallet integration (Freighter)
-
----
-
-## Features
-
-* Creator profile pages
-* Send tips to creators
-* Wallet connection
-* View tip history
-* Simple and clean UI
-* Mobile responsive design
-
----
-
-## Project Structure
-
-```
-src
-│
-├── components
-├── pages
-├── hooks
-├── services
-├── utils
-└── styles
-```
-
-Example responsibilities:
-
-* **components** – reusable UI elements
-* **pages** – application routes
-* **hooks** – wallet connection and blockchain hooks
-* **services** – API communication
-* **utils** – helper functions
-
----
-
-## Getting Started
-
-### 1. Clone the repository
-
-```
-git clone https://github.com/your-username/stellar-tipjar-frontend.git
-cd stellar-tipjar-frontend
-```
-
-### 2. Install dependencies
-
-```
+```bash
 npm install
 ```
 
-### 3. Start the development server
+3. Create your local environment file:
 
+```bash
+cp .env.example .env.local
 ```
+
+## Development Instructions
+
+1. Start development server:
+
+```bash
 npm run dev
 ```
 
-The application should now be running at:
+2. Open `http://localhost:3000`.
+3. Run lint checks:
 
-```
-http://localhost:3000
+```bash
+npm run lint
 ```
 
----
+4. Run type checking:
+
+```bash
+npm run typecheck
+```
+
+5. Build for production:
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```text
+src/
+  app/          # App Router routes and layout
+  components/   # Reusable UI components
+  hooks/        # Reusable React hooks
+  services/     # API service layer
+  utils/        # Utility/helper functions
+  styles/       # Global and shared styles
+```
+
+### Notes for Contributors
+
+- Keep route-specific UI inside `src/app/<route>`.
+- Place reusable UI in `src/components`.
+- Put API integration logic in `src/services`.
+- Keep wallet implementation details in `src/hooks/useWallet.ts`.
 
 ## Environment Variables
 
-Create a `.env` file in the root directory.
+See `.env.example`:
 
-Example:
-
-```
-NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_STELLAR_NETWORK=testnet
-```
-
----
-
-## Contributing
-
-We welcome contributions from the open-source community.
-
-Ways you can contribute:
-
-* Improve UI/UX
-* Add wallet integrations
-* Implement new features
-* Fix bugs
-* Improve documentation
-
-### Contribution Steps
-
-1. Fork the repository
-2. Create a new branch
-
-```
-git checkout -b feature/your-feature-name
-```
-
-3. Commit your changes
-4. Push your branch
-5. Open a Pull Request
-
----
-
-## Roadmap
-
-* Wallet connection (Freighter)
-* Tip history dashboard
-* Creator discovery page
-* QR code tip links
-* Dark mode support
-* Mobile optimization
-
----
-
-## Related Repositories
-
-* stellar-tipjar-backend
-* stellar-tipjar-contracts
-
----
+- `NEXT_PUBLIC_API_URL` - backend base URL
+- `NEXT_PUBLIC_STELLAR_NETWORK` - Stellar network (`testnet` by default)
 
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-## Acknowledgements
-
-Built using the Stellar ecosystem and Soroban smart contracts.
