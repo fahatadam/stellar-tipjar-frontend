@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Navbar } from "@/components/Navbar";
 import "@/styles/globals.css";
 
@@ -21,7 +22,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="min-h-screen">
           <Navbar />
-          <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">{children}</main>
+          <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+            <ErrorBoundary>{children}</ErrorBoundary>
+          </main>
         </div>
       </body>
     </html>
