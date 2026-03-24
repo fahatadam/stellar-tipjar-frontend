@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, forwardRef } from "react";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "tertiary";
 
@@ -17,20 +17,20 @@ const variantStyles: Record<ButtonVariant, string> = {
     "bg-transparent text-wave hover:underline focus-visible:ring-wave/30 dark:text-wave-dark dark:hover:text-wave-dark/80 dark:focus-visible:ring-wave-dark/30",
 };
 
-export function Button({
-  children,
-  className = "",
-  variant = "primary",
-  type = "button",
-  ...props
-}: ButtonProps) {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  { children, className = "", variant = "primary", type = "button", disabled, ...props },
+  ref
+) {
   return (
     <button
+      ref={ref}
       type={type}
-      className={`inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 ${variantStyles[variant]} ${className}`}
+      disabled={disabled}
+      aria-disabled={disabled}
+      className={`inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 ${variantStyles[variant]} ${className}`}
       {...props}
     >
       {children}
     </button>
   );
-}
+});
