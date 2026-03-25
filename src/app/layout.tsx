@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { InstallPrompt } from "@/components/InstallPrompt";
 import { Navbar } from "@/components/Navbar";
+import { ReactQueryProvider } from "@/components/ReactQueryProvider";
 import { SkipToContent } from "@/components/SkipToContent";
 import { WalletProvider } from "@/contexts/WalletContext";
 import { WebSocketProvider } from "@/contexts/WebSocketContext";
@@ -47,19 +48,19 @@ export default function RootLayout({
       <body className={inter.className}>
         <SkipToContent />
         <WalletProvider>
-          <WebSocketProvider>
-            <div className="min-h-screen">
-              <Navbar />
-              <main
-                id="main-content"
-                tabIndex={-1}
-                className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8 focus:outline-none"
-              >
-                {children}
-              </main>
-            </div>
-            <InstallPrompt />
-          </WebSocketProvider>
+          <ReactQueryProvider>
+          <div className="min-h-screen">
+            <Navbar />
+            <main
+              id="main-content"
+              tabIndex={-1}
+              className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8 focus:outline-none"
+            >
+              {children}
+            </main>
+          </div>
+          <InstallPrompt />
+          </ReactQueryProvider>
         </WalletProvider>
       </body>
     </html>
