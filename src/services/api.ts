@@ -9,7 +9,9 @@ export interface CreatorProfile {
   displayName: string;
   bio: string;
   preferredAsset: string;
+  isVerified?: boolean;
 }
+
 
 export interface ApiRateLimitStatus {
   isLimited: boolean;
@@ -249,9 +251,29 @@ export async function getCreatorProfile(username: string): Promise<CreatorProfil
       displayName: `@${username}`,
       bio: "Creator bio will be loaded from the backend API.",
       preferredAsset: "XLM",
+      isVerified: Math.random() > 0.7, // Demo 30% verified
     };
   }
 }
+
+export async function requestVerification(username: string): Promise<{ success: boolean }> {
+  try {
+    return await request(`/creators/${username}/verify/request`, {
+      method: 'POST',
+    });
+  } catch {
+    return { success: true }; // Mock success
+  }
+}
+
+export async function requestVerificationStatus(): Promise<{ isVerified: boolean; status: 'pending' | 'approved' | 'rejected' }> {
+  try {
+    return await request('/me/verify/status');
+  } catch {
+    return { isVerified: false, status: 'pending' }; // Mock
+  }
+}
+
 
 export async function createTipIntent(payload: {
   username: string;

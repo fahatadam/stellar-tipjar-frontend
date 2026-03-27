@@ -1,16 +1,21 @@
-# Leaderboards Implementation TODO
+# Creator Verification TODO
 
 ## Completed Steps
-- [x] Plan confirmed
+- [x] Created feature/creator-verification branch
 
 ## Steps to Complete
-1. [x] Create `src/components/Leaderboards/Leaderboards.tsx` (tabs + time filter)
-2. [ ] Create `src/components/Leaderboards/LeaderboardTable.tsx` (ranked table)
-3. [ ] Create `src/components/Leaderboards/TimeFilter.tsx`
-4. [x] Add `getLeaderboards()` mock to `src/services/api.ts`
-5. [ ] Integrate `<Leaderboards />` in `src/app/explore/page.tsx`
-6. [ ] Test `npm run dev` → /explore
-7. [ ] Complete
+1. [x] Create VerificationBadge.tsx (badge display)
+2. [x] Update creatorSchema.ts (+isVerified?: boolean)
+3. [x] Update CreatorProfile in api.ts (+isVerified)
 
-**Current Step: 4. Add API mocks**
+4. [ ] Add verification endpoints to api.ts (requestVerification, getVerificationStatus)
+5. [ ] Create VerificationForm.tsx
+6. [ ] Create useVerification.ts hook
+7. [ ] Create src/app/verify/page.tsx
+8. [ ] Update creator/[username]/page.tsx (show badge, request button)
+9. [ ] Test flow
+10. [ ] Complete
+
+**Current Step: 4. Add verification endpoints**
+
 

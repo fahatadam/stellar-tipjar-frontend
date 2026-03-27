@@ -12,6 +12,8 @@ export const creatorUsernameSchema = z
 
 export const creatorSchema = z.object({
   username: creatorUsernameSchema,
+  isVerified: z.boolean().optional().default(false),
 });
 
 export type CreatorSchemaValues = z.infer<typeof creatorSchema>;
+
